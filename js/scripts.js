@@ -1,3 +1,4 @@
+// list of pokemon
 var pokemonList = [
     {
         name : "charmander",
@@ -21,3 +22,13 @@ var pokemonList = [
     }
 
 ];
+// iterates through all pokemon in the pokemonList array
+for (i = 0; i < pokemonList.length; i++) {
+    // writes the pokemon name and height to the dom using document.write
+    document.write(pokemonList[i].name + " " + "height" + " " + ":" + " " + pokemonList[i].height + " ");
+    // checks is pokemon height is greater than or equal to 2 and if it is, writes a custom message to the dom
+    if (pokemonList[i].height >= 2) {document.write("wow thats big!" + "<br>")}
+    // runs is the previous statement evaluates to false, and writes a custom message
+    else {document.write("that pokemon is under 2 feet" + "<br>")}
+    
+}
