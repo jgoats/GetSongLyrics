@@ -1,0 +1,11 @@
+* {
+    margin : 0px;
+    padding : 0px;
+    box-sizing : border-box;
+    line-height : 4;
+}
+
+body {
+    color : rgb(6, 25, 54);
+    text-align : center;
+}
