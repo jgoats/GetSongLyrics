@@ -26,11 +26,14 @@ body {
     overflow : scroll;
     background-color : rgb(225, 240, 241);
     margin-top : 100px;
+    overflow-x : hidden;
+    border-radius : 10px;
 }
 h3 {
     font-weight : bold;
     font-size : 30px;
     margin-bottom : 10px;
+    background-color :rgb(205, 220, 235);
 }
 li {
     width : 100%;
@@ -75,3 +78,24 @@ input {
 #search-icon:hover {
     cursor : pointer;
 }
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius : 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background :rgb(6, 25, 54);
+    border-radius : 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background :rgb(6, 25, 54);
+  }
