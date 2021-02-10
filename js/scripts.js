@@ -62,7 +62,10 @@ var pokemonRepository = (function () {
         button.textContent = pokemon;
         button.classList.add("btn");
         listItem.appendChild(button);
-        console.log("running");
+        button.addEventListener("click" , function () {pokemonRepository.showDetails(pokemon)} , false);
+    },
+    showDetails : function (pokemon) {
+        console.log(pokemon);
     }
 }
 })();
@@ -75,5 +78,7 @@ types : ["fire" , "fighting"]
 
 // iterates through all pokemon in the pokemonList array
 pokemonRepository.getAll.forEach(function (item) {
-pokemonRepository.addListItem(item.name)});
+pokemonRepository.addListItem(item.name);
+
+});
     
