@@ -53,6 +53,16 @@ var pokemonRepository = (function () {
         else {
             alert("data not in object format!");
         }
+    },
+    addListItem : function (pokemon) {
+        var unorderedList = document.querySelector(".pokemonList");
+        var button = document.createElement("button");
+        var listItem = document.createElement("li");
+        unorderedList.appendChild(listItem);
+        button.textContent = pokemon;
+        button.classList.add("btn");
+        listItem.appendChild(button);
+        console.log("running");
     }
 }
 })();
@@ -65,11 +75,5 @@ types : ["fire" , "fighting"]
 
 // iterates through all pokemon in the pokemonList array
 pokemonRepository.getAll.forEach(function (item) {
-     // writes the pokemon name and height to the dom using document.write
-     document.write(item.name + " " + "height" + " " + ":" + " " + item.height + " ");
-     // checks is pokemon height is greater than or equal to 2 and if it is, writes a custom message to the dom
-     if (item.height >= 2) {document.write("wow thats big!" + "<br>")}
-     // runs is the previous statement evaluates to false, and writes a custom message
-     else {document.write("that pokemon is under 2 feet" + "<br>")}
-})
+pokemonRepository.addListItem(item.name)});
     

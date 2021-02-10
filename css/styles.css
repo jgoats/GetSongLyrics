@@ -8,4 +8,7 @@
 body {
     color : rgb(6, 25, 54);
     text-align : center;
+} 
+.btn {
+    color : green;
 }
