@@ -2,13 +2,76 @@
     margin : 0px;
     padding : 0px;
     box-sizing : border-box;
-    line-height : 4;
+}
+html {
+    background-image:url("../images/app-background.jpg");
+    background-size : cover;
+    font-family: 'Big Shoulders Display', cursive;
 }
 
 body {
     color : rgb(6, 25, 54);
     text-align : center;
+    height : 100%;
+    width : 100%;
 } 
+.pokemonList {
+    display : block;
+    max-width : 350px;
+    width : 80%;
+    margin-left : auto;
+    margin-right : auto;
+    max-height : 1000px;
+    height : 400px;
+    overflow : scroll;
+    background-color : rgb(225, 240, 241);
+    margin-top : 100px;
+}
+h3 {
+    font-weight : bold;
+    font-size : 30px;
+    margin-bottom : 10px;
+}
+li {
+    width : 100%;
+    padding : 10px;
+    text-align : center;
+    display : block;
+}
 .btn {
-    color : green;
+    color : black;
+    font-weight : bold;
+    font-size : 18px;
+    font-style:italic;
+    text-transform : uppercase;
+    width : 80%;
+    padding : 10px;
+    margin-top : 10px;
+    margin-bottom : 10px;
+    background-color : rgb(230,230,230);
+    border : none;
+    box-shadow : 2px 2px 2px rgb(6, 25, 54);
+}
+.btn:hover {
+    cursor : pointer;
+    background-color : rgb(165, 157, 157);
+}
+form {
+    height : 35px;
+    display : flex;
+    border : none;
+}
+input {
+    flex-grow : 8;
+    text-align : center;
+    border : none;
+}
+#search-icon {
+    display : inline-block;
+    height : 100%;
+    width : 35px;
+    background-color : white;
+}
+#search-icon:hover {
+    cursor : pointer;
 }
