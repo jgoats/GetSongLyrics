@@ -94,6 +94,22 @@ form {
     margin-left : 10px;
     margin-right : 10px;
 }
+.deletebtn {
+    color : red;
+    background-color : black;
+    width : 25px;
+    height : 25px;
+    text-align : center;
+    font-weight : bold;
+}
+.artist-song {
+    display : inline;
+    font-weight : bold;
+    font-size : 22px;
+    color : black;
+    margin-bottom : 10px;
+}
+
 #message {
 text-align : center;
 color : black;
