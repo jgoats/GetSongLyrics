@@ -1,84 +1,106 @@
-var pokemonRepository = (function () {
-    // list of pokemon
-    var pokemonList = [
-        {
-            name : "charmander",
-            height : 2,
-            types : ["fire"]
-        },
-        {
-            name : "snorlax",
-            height : 6.11,
-            type : ["normal"]
-        },
-        {
-            name : "combusken",
-            height : 2.11,
-            types : ["fire" , "fighting"]
-        },
-        {
-            name : "torkoal",
-            height : 1.8,
-            types : ["fire"]
+songRepository = (function (){
+    var message = document.getElementById("message");
+    var lyricList = [];
+
+    var userData = {
+        artist : "",
+        song : ""
+    }
+    var typedSong = [];
+    var queriedSong = [];
+   
+    var typedArtist = [];
+    var queriedArtist = [];
+
+    function searchForSongArtist(event) {
+        userData.artist = "";
+        userData.artist = event.target.value;
+    }
+    function searchForSong(event) {
+        userData.song = "";
+        userData.song = event.target.value;
+    }
+    function eraseData () {
+        typedSong = [];
+        queriedSong = [];
+        typedArtist = [];
+        queriedArtist = [];
+        userData.artist = "";
+        userData.song = "";
+        document.getElementById("searchforartist").value = "";
+        document.getElementById("searchforsong").value = "";    
+    }
+    function validateInfo() {
+        console.log(userData);
+         if (userData.artist === "") {
+            message.innerHTML = "Artist Search field Is Empty";
         }
-    
-    ];
-    return {
-        getAll : pokemonList,
-        add : function (item) {
-            if (typeof item === "object") {
-                var passedObject = {};
-                var keys = Object.keys(item);
-                keys.forEach(function (key) {
-                    switch (key) {
-                        case "name" : if (item.name) {
-                            passedObject.name = item.name;
-                        }
-                        break;
-                        case "height" : if (item.height) {
-                            passedObject.height = item.height;
-                        }
-                        break;
-                        case "types" : if (item.types) {
-                            passedObject.types = item.types;
-                        }
-                        break;
-                    }
-                });
-                if (Object.keys(passedObject).length === 3) {
-                    pokemonList.push(passedObject);
-                }
-           else {alert("missing or incorrect data!")}
+        else if (userData.song == "") {
+            message.innerHTML = "Song Search Field Is Empty";
         }
         else {
-            alert("data not in object format!");
+           message.innerHTML = "";
+           for (i = 0; i < userData.artist.length; i++) {
+               typedArtist.push(userData.artist[i]);
+           }
+           typedArtist.forEach(function (item) {
+            if (item === " ") {
+                item = "%20";
+            }
+            queriedArtist.push(item);
+            
+            
+           });
+           for (y = 0; y < userData.song.length; y++) {
+            typedSong.push(userData.song[y]);
         }
-    },
-    addListItem : function (pokemon) {
-        var unorderedList = document.querySelector(".pokemonList");
-        var button = document.createElement("button");
-        var listItem = document.createElement("li");
-        unorderedList.appendChild(listItem);
-        button.textContent = pokemon;
-        button.classList.add("btn");
-        listItem.appendChild(button);
-        button.addEventListener("click" , function () {pokemonRepository.showDetails(pokemon)} , false);
-    },
-    showDetails : function (pokemon) {
-        console.log(pokemon);
-    }
+        typedSong.forEach(function (item) {
+         if (item === " ") {
+             item = "%20";
+         }
+         queriedSong.push(item);
+         
+         
+        });
+        }
+        AddListItem(queriedArtist , queriedSong);
 }
+    function AddListItem (artist , song) {
+        ApiUrl = 'https://api.lyrics.ovh/v1/' + `${artist.join("")}` + '/' + `${song.join("")}`;
+
+        fetch(ApiUrl).then(function (response) {
+            return response.json();
+          }).then(function (json) {
+              let container = document.createElement("div");
+              container.setAttribute("class" , "song-container");
+              let lyrics = document.createElement("p");
+              lyrics.setAttribute("class" , "lyrics");
+              lyrics.textContent = json.lyrics;
+              container.append(lyrics);
+              document.getElementsByClassName("songList")[0].appendChild(container);
+              console.log(json.lyrics);
+              lyricList.push(json.lyrics);
+          }).catch(function (e) {
+            console.error(e);
+          });
+          eraseData();
+    }
+    
+    return {
+        searchForSongArtist : searchForSongArtist,
+        searchForSong : searchForSong,
+        validateInfo : validateInfo,
+        eraseData : eraseData
+    }
+
 })();
 
-pokemonRepository.add({
-name : "blaziken",
-height : 7,
-types : ["fire" , "fighting"]
-});
-
-// iterates through all pokemon in the pokemonList array
-pokemonRepository.getAll.forEach(function (item) {
-pokemonRepository.addListItem(item.name);
-
-});
+document.getElementById("searchforartist")
+.addEventListener("input" , (event)=> songRepository.searchForSongArtist(event) , false);
+document.getElementById("searchforsong")
+.addEventListener("input" , (event) => songRepository.searchForSong(event) , false);
+document.getElementById("search-icon").addEventListener("click" , songRepository.validateInfo , false);
     
+  
+
+   

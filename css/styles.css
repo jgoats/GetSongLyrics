@@ -14,19 +14,17 @@ body {
     text-align : center;
     height : 100%;
     width : 100%;
+    overflow : hidden;
 } 
-.pokemonList {
+.songList {
     display : block;
-    max-width : 350px;
+    max-width : 700px;
     width : 80%;
     margin-left : auto;
     margin-right : auto;
-    max-height : 1000px;
-    height : 400px;
-    overflow : scroll;
-    background-color : rgb(225, 240, 241);
+    min-height : 400px;
+    background-color : rgb(126, 178, 182);
     margin-top : 100px;
-    overflow-x : hidden;
     border-radius : 10px;
 }
 h3 {
@@ -60,20 +58,45 @@ li {
     background-color : rgb(165, 157, 157);
 }
 form {
+   display : grid;
+   grid-template-columns : 1fr 1fr 35px;
+   height : 35px;
+   grid-gap : 5px;
+
+}
+#searchforartist {
     height : 35px;
-    display : flex;
+    text-align : center;
     border : none;
 }
-input {
-    flex-grow : 8;
+#searchforsong {
+    height : 35px;
     text-align : center;
     border : none;
 }
 #search-icon {
-    display : inline-block;
     height : 100%;
     width : 35px;
     background-color : white;
+    display : block;
+}
+.song-container {
+    margin-top : 20px;
+    display : block;
+    overflow : scroll;
+    background-color : white;
+    margin-left : 15px;
+    margin-right : 15px;
+}
+.lyrics {
+    color : black;
+    text-align :center;
+    margin-left : 10px;
+    margin-right : 10px;
+}
+#message {
+text-align : center;
+color : black;
 }
 #search-icon:hover {
     cursor : pointer;
