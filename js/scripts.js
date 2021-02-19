@@ -62,10 +62,7 @@ songRepository = (function (){
          
          
         });
-              let artistSong = document.createElement("p");
-              artistSong.setAttribute("class" , "artist-song");
-              artistSong.textContent = `${typedArtist.join("")}` + " : " + `${typedSong.join("")}`;
-              document.getElementsByClassName("songList")[0].append(artistSong);
+             
         }
         AddListItem(queriedArtist , queriedSong);
 }
@@ -78,6 +75,10 @@ songRepository = (function (){
               let container = document.createElement("div");
               container.setAttribute("class" , "song-container");
               document.getElementsByClassName("songList")[0].appendChild(container);
+              let artistSong = document.createElement("p");
+              artistSong.setAttribute("class" , "artist-song");
+              artistSong.textContent = `${typedArtist.join("")}` + " : " + `${typedSong.join("")}`;
+              container.append(artistSong);
               let lyrics = document.createElement("p");
               lyrics.setAttribute("class" , "lyrics");
               lyrics.textContent = json.lyrics;
@@ -87,6 +88,10 @@ songRepository = (function (){
               deletebtn.setAttribute("class" , "deletebtn");
               deletebtn.textContent = "X";
               container.append(deletebtn);
+              deletebtn.addEventListener("click" , function (e){
+              let parent = e.target.parentNode.parentNode;
+              parent.removeChild(e.target.parentNode);         
+              },false)
               eraseData();
           }).catch(function (e) {
             console.error(e);   
@@ -107,6 +112,7 @@ document.getElementById("searchforartist")
 document.getElementById("searchforsong")
 .addEventListener("input" , (event) => songRepository.searchForSong(event) , false);
 document.getElementById("search-icon").addEventListener("click" , songRepository.validateInfo , false);
+
 
     
   
