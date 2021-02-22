@@ -84,9 +84,9 @@ songRepository = (function (){
               lyrics.textContent = json.lyrics;
               container.append(lyrics);
               lyricList.push(json.lyrics);
-              var deletebtn = document.createElement("button");
+              var deletebtn = document.createElement("img");
               deletebtn.setAttribute("class" , "deletebtn");
-              deletebtn.textContent = "X";
+              deletebtn.setAttribute("src" , "./images/remove.svg");
               container.append(deletebtn);
               deletebtn.addEventListener("click" , function (e){
               let parent = e.target.parentNode.parentNode;
@@ -94,7 +94,7 @@ songRepository = (function (){
               },false)
               eraseData();
           }).catch(function (e) {
-            console.error(e);   
+            message.innerHTML = (e); 
           });
     }
     
