@@ -10,15 +10,17 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
+    <div class="modal-delete-container">
+      <div class="modal-delete"></div>
+    </div>
       <ul class="songList">
         <h3>Search For Song Lyrics</h3>
         <form>
-          <input id="searchforartist" type="search" placeholder="Search For An Artist" />
-          <input id="searchforsong" type="search" placeholder="Search for A Song From That Artist" />
-          <img id="search-icon" src="./images/searchicon.png" />
-          <p id="message"></p>
+          <input id="searchforartist" type="search" placeholder="Artist" />
+          <input id="searchforsong" type="search" placeholder="Song" />
+          <img class="icon" id="search-icon" src="./images/magnifying-glass.svg" />
         </form>
-
+        <p id="message"></p>
       </ul>
       <script src="./js/scripts.js"></script>
   </body>
