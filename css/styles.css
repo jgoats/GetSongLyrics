@@ -102,16 +102,16 @@ display : block;
 }
 /* width */
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 10px;
   }
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background :rgb(251, 251, 252);
+    background :rgb(22, 77, 60);
   }
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background :rgb(180, 186, 196);
+    background :rgb(15, 51, 26);
   }
   .modal-delete-container {
     display : block;
