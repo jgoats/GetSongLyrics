@@ -28,7 +28,7 @@ songRepository = (function (){
         userData.artist = "";
         userData.song = "";
         document.getElementById("searchforartist").value = "";
-        document.getElementById("searchforsong").value = "";    
+        document.getElementById("searchforsong").value = ""; 
     }
     function validateInfo() {
         console.log(userData);
@@ -85,13 +85,67 @@ songRepository = (function (){
               container.append(lyrics);
               lyricList.push(json.lyrics);
               var deletebtn = document.createElement("img");
-              deletebtn.setAttribute("class" , "deletebtn");
+              deletebtn.setAttribute("class" , "icon");
+              deletebtn.setAttribute("id" , "deletebtn");
               deletebtn.setAttribute("src" , "./images/remove.svg");
               container.append(deletebtn);
-              deletebtn.addEventListener("click" , function (e){
-              let parent = e.target.parentNode.parentNode;
-              parent.removeChild(e.target.parentNode);         
-              },false)
+              deletebtn.addEventListener("click" , function (event) {
+            document.getElementsByClassName("songList")[0].style.zIndex= "-1";
+             var trashCan = document.createElement("img");
+             trashCan.setAttribute("class" , "icon");
+             trashCan.setAttribute("id" , "trash-icon");
+             trashCan.setAttribute("src" , "./images/trash.svg");
+             document.getElementsByClassName("modal-delete")[0].append(trashCan);
+              var prompt = document.createElement("p");
+              prompt.setAttribute("id" , "prompt");
+              var textNode = `Are you sure you want to delete lyrics from ` + "<br>" +
+              `${artistSong.innerHTML}` + " ?";  
+              prompt.innerHTML = textNode.toUpperCase();
+              document.getElementsByClassName("modal-delete")[0].append(prompt);
+              var check = document.createElement("img");
+             check.setAttribute("class" , "icon");
+             check.setAttribute("id" , "check");
+             check.setAttribute("src" , "./images/check.svg");
+             document.getElementsByClassName("modal-delete")[0].append(check);
+             var undo = document.createElement("img");
+             undo.setAttribute("class" , "icon");
+             undo.setAttribute("id" , "remove");
+             undo.setAttribute("src" , "./images/remove.svg");
+             document.getElementsByClassName("modal-delete")[0].append(undo);
+                check.addEventListener("click" , function (e) {
+                    // remove children from modal delete
+                    let elm = e.target.parentNode;
+                    while (elm.hasChildNodes()) {
+                        elm.removeChild(elm.lastChild);
+                      }
+                    if (!elm.hasChildNodes()) {
+                        eraseData();
+                        document.getElementsByClassName("songList")[0].style.zIndex= "1";
+                        let parent = event.target.parentNode.parentNode;
+                        parent.removeChild(event.target.parentNode);       
+                    }
+                },false);
+                undo.addEventListener("click" , function(e) {
+                    let elm = e.target.parentNode;
+                    while (elm.hasChildNodes()) {
+                        elm.removeChild(elm.lastChild);
+                      }
+                      if (!elm.hasChildNodes()) {
+                        eraseData();
+                        document.getElementsByClassName("songList")[0].style.zIndex= "1";     
+                    }
+                },false);
+                trashCan.addEventListener("click" , function (e) {
+                    let elm = e.target.parentNode;
+                    while (elm.hasChildNodes()) {
+                        elm.removeChild(elm.lastChild);
+                      }
+                      if (!elm.hasChildNodes()) {
+                        eraseData();
+                        document.getElementsByClassName("songList")[0].style.zIndex= "1";     
+                    }
+                },false);
+              },false);
               eraseData();
           }).catch(function (e) {
             message.innerHTML = (e); 
@@ -112,9 +166,3 @@ document.getElementById("searchforartist")
 document.getElementById("searchforsong")
 .addEventListener("input" , (event) => songRepository.searchForSong(event) , false);
 document.getElementById("search-icon").addEventListener("click" , songRepository.validateInfo , false);
-
-
-    
-  
-
-   
