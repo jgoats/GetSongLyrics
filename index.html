@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-       crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+     rel="stylesheet"
+     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+     crossorigin="anonymous">
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link rel="preconnect" href="https://fonts.gstatic.com">
       <link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&display=swap" rel="stylesheet">
@@ -13,28 +14,33 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <div class="modal-delete-container">
-      <div class="modal-delete"></div>
-    </div>
-      <ul class="songList">
-        <h3>Search For Song Lyrics</h3>
-        <form>
-          <input id="searchforartist" type="search" placeholder="Artist" />
-          <input id="searchforsong" type="search" placeholder="Song" />
-          <img class="icon" id="search-icon" src="./images/magnifying-glass.svg" />
-        </form>
-        <p id="message"></p>
-      </ul>
-      <script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-   integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" 
-   crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
- integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
- crossorigin="anonymous"></script>
+    <div class="vertical-center-content">
+    <nav role="navigation" class="navbar-light bg-light main-container">
+           <p class="navbar-text navbar-brand">
+          <img src="./images/music.svg" width="40" height="40" class="d-inline-block align-middle" alt="">
+         Search For Song Lyrics</p>
+    </nav>
+        <div class="text-center container-xl main-container">
+          <div class="mx-5 my-3">
+            <label for="Artist Name" class="form-label">Artist</label>
+            <input type="search" class="form-control" id="searchforartist" aria-describedby="insert artist">
+          </div>
+          <div class="mx-5 mt-3">
+            <label for="Song Name" class="form-label">Song</label>
+            <input type="search" class="form-control" id="searchforsong" aria-describedby="insert songname">
+          </div>
+          <button id="search-icon" type="submit" class="btn btn-primary my-3">Search</button>
+        </div>
+        <ul class="songList">
+        </ul>
+      </div>
+      <script 
+       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+       integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+       crossorigin="anonymous">
+      </script>
 <script src="./js/scripts.js"></script>
   </body>
 </html>
+
+
