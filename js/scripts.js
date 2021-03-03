@@ -84,34 +84,32 @@ songRepository = (function (){
               lyrics.textContent = json.lyrics;
               container.append(lyrics);
               lyricList.push(json.lyrics);
-              var deletebtn = document.createElement("img");
-              deletebtn.setAttribute("class" , "icon");
-              deletebtn.setAttribute("id" , "deletebtn");
-              deletebtn.setAttribute("src" , "./images/remove.svg");
-              container.append(deletebtn);
-              deletebtn.addEventListener("click" , function (event) {
-                undo.addEventListener("click" , function(e) {
-                    let elm = e.target.parentNode;
-                    while (elm.hasChildNodes()) {
-                        elm.removeChild(elm.lastChild);
-                      }
-                      if (!elm.hasChildNodes()) {
-                        eraseData();
-                        document.getElementsByClassName("songList")[0].style.zIndex= "1";     
-                    }
-                },false);
-                trashCan.addEventListener("click" , function (e) {
-                    let elm = e.target.parentNode;
-                    while (elm.hasChildNodes()) {
-                        elm.removeChild(elm.lastChild);
-                      }
-                      if (!elm.hasChildNodes()) {
-                        eraseData();
-                        document.getElementsByClassName("songList")[0].style.zIndex= "1";     
-                    }
-                },false);
-              },false);
+              let btn = document.createElement("button");
+              btn.setAttribute("type" , "button");
+              btn.setAttribute("class" , "btn btn-danger remove");
+              btn.setAttribute("data-toggle" , "modal");
+              btn.setAttribute("data-target" , "#Modal");
+              btn.textContent = "Remove";
+              container.append(btn);
               eraseData();
+              btn.addEventListener("click" , function (e) {
+                  let string = "Are You Sure You Want To Remove" + "<br>" + `<span class="highlight">${artistSong.textContent}</span>`;
+                  document.getElementsByClassName("modal-title")[0].innerHTML = string;
+                  document.getElementsByClassName("delete")[0].addEventListener("click" , function () {
+                      let elm = e.target.parentNode
+                      if (elm) {
+                        while(elm.hasChildNodes()) {
+                            elm.removeChild(elm.lastChild);
+                            eraseData();
+                        } 
+                        if (!elm.hasChildNodes()) {
+                            elm.parentNode.removeChild(elm);
+                      }
+                     
+                    }
+                } , true);
+                
+              } , false);
           }).catch(function (e) {
 
           });
