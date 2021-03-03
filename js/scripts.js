@@ -77,7 +77,7 @@ songRepository = (function (){
               document.getElementsByClassName("songList")[0].appendChild(container);
               let artistSong = document.createElement("p");
               artistSong.setAttribute("class" , "artist-song");
-              artistSong.textContent = `${typedArtist.join("")}` + " : " + `${typedSong.join("")}`;
+              artistSong.textContent = `${typedArtist.join("").toUpperCase()}` + " : " + `${typedSong.join("").toUpperCase()}`;
               container.append(artistSong);
               let lyrics = document.createElement("p");
               lyrics.setAttribute("class" , "lyrics");
@@ -90,41 +90,6 @@ songRepository = (function (){
               deletebtn.setAttribute("src" , "./images/remove.svg");
               container.append(deletebtn);
               deletebtn.addEventListener("click" , function (event) {
-            document.getElementsByClassName("songList")[0].style.zIndex= "-1";
-             var trashCan = document.createElement("img");
-             trashCan.setAttribute("class" , "icon");
-             trashCan.setAttribute("id" , "trash-icon");
-             trashCan.setAttribute("src" , "./images/trash.svg");
-             document.getElementsByClassName("modal-delete")[0].append(trashCan);
-              var prompt = document.createElement("p");
-              prompt.setAttribute("id" , "prompt");
-              var textNode = `Are you sure you want to delete lyrics from ` + "<br>" +
-              `${artistSong.innerHTML}` + " ?";  
-              prompt.innerHTML = textNode.toUpperCase();
-              document.getElementsByClassName("modal-delete")[0].append(prompt);
-              var check = document.createElement("img");
-             check.setAttribute("class" , "icon");
-             check.setAttribute("id" , "check");
-             check.setAttribute("src" , "./images/check.svg");
-             document.getElementsByClassName("modal-delete")[0].append(check);
-             var undo = document.createElement("img");
-             undo.setAttribute("class" , "icon");
-             undo.setAttribute("id" , "remove");
-             undo.setAttribute("src" , "./images/remove.svg");
-             document.getElementsByClassName("modal-delete")[0].append(undo);
-                check.addEventListener("click" , function (e) {
-                    // remove children from modal delete
-                    let elm = e.target.parentNode;
-                    while (elm.hasChildNodes()) {
-                        elm.removeChild(elm.lastChild);
-                      }
-                    if (!elm.hasChildNodes()) {
-                        eraseData();
-                        document.getElementsByClassName("songList")[0].style.zIndex= "1";
-                        let parent = event.target.parentNode.parentNode;
-                        parent.removeChild(event.target.parentNode);       
-                    }
-                },false);
                 undo.addEventListener("click" , function(e) {
                     let elm = e.target.parentNode;
                     while (elm.hasChildNodes()) {
@@ -148,7 +113,7 @@ songRepository = (function (){
               },false);
               eraseData();
           }).catch(function (e) {
-            message.innerHTML = (e); 
+
           });
     }
     
