@@ -66,15 +66,28 @@ songRepository = (function (){
     function AddListItem (artist , song) {
         var counter = 0;
         var counterTwo = 0;
+        const controller = new AbortController();
         var animation = window.setInterval(function () {
             var objectOne = document.getElementById("gearOne");
             var objectTwo = document.getElementById("gearTwo");
+            console.log(counter);
+            if (counter >= 2000) {
+                window.clearInterval(animation);
+                controller.abort();
+                objectOne.style.opacity = "0";
+                objectTwo.style.opacity = "0";
+                eraseData();
+                message.innerHTML = `Application timed out, make sure you spelled the artist
+                 and song correctly and that you have a good internet connection`;
+            }
+            else {
             objectOne.style.opacity = "1";
             let value = `rotate(${counter++}deg)`;
             objectOne.style.transform = value;
             objectTwo.style.opacity = "1";
             let value2 = `rotate(${counterTwo--}deg)`;
             objectTwo.style.transform = value2;
+            }
         } , 10);
         ApiUrl = 'https://api.lyrics.ovh/v1/' + `${artist.join("")}` + '/' + `${song.join("")}`;
 
@@ -123,7 +136,7 @@ songRepository = (function (){
                 
               } , false);
           }).catch(function (e) {
-
+            
           });
     }
     
