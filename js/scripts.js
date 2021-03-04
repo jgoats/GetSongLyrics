@@ -3,8 +3,8 @@ songRepository = (function () {
   var lyricList = [];
 
   var userData = {
-    artist: "",
-    song: "",
+    artist: '',
+    song: '',
   };
   var typedSong = [];
   var queriedSong = [];
