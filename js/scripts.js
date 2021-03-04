@@ -1,10 +1,10 @@
-songRepository = (function () {
+  var songRepository = (function () {
   var message = document.getElementById("message");
   var lyricList = [];
 
   var userData = {
-    artist: '',
-    song: '',
+    artist: "",
+    song: "",
   };
   var typedSong = [];
   var queriedSong = [];
@@ -38,7 +38,7 @@ songRepository = (function () {
       message.innerHTML = "Song Search Field Is Empty";
     } else {
       message.innerHTML = "";
-      for (i = 0; i < userData.artist.length; i++) {
+      for (let i = 0; i < userData.artist.length; i++) {
         typedArtist.push(userData.artist[i]);
       }
       typedArtist.forEach(function (item) {
@@ -47,7 +47,7 @@ songRepository = (function () {
         }
         queriedArtist.push(item);
       });
-      for (y = 0; y < userData.song.length; y++) {
+      for (let y = 0; y < userData.song.length; y++) {
         typedSong.push(userData.song[y]);
       }
       typedSong.forEach(function (item) {
@@ -84,7 +84,7 @@ songRepository = (function () {
         objectTwo.style.transform = value2;
       }
     }, 10);
-    ApiUrl =
+    var ApiUrl =
       "https://api.lyrics.ovh/v1/" +
       `${artist.join("")}` +
       "/" +
