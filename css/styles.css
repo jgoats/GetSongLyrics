@@ -72,3 +72,10 @@ body {
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(83, 200, 223);
   }
+#gearOne {
+  margin-right : -8px;
+  opacity : 0;
+}
+#gearTwo {
+  opacity : 0;
+}
