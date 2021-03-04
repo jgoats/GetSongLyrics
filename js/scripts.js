@@ -67,11 +67,12 @@ songRepository = (function (){
         var counter = 0;
         var counterTwo = 0;
         const controller = new AbortController();
-        var animation = window.setInterval(function () {
+       var animation = window.setInterval(function () {
+           console.log(counter);
             var objectOne = document.getElementById("gearOne");
             var objectTwo = document.getElementById("gearTwo");
             console.log(counter);
-            if (counter >= 2000) {
+           if (counter >= 2000) {
                 window.clearInterval(animation);
                 controller.abort();
                 objectOne.style.opacity = "0";
@@ -135,8 +136,13 @@ songRepository = (function (){
                 } , true);
                 
               } , false);
-          }).catch(function (e) {
-            
+          }).catch(function () {
+            document.getElementById("gearOne").style.opacity= "0";
+            document.getElementById("gearTwo").style.opacity = "0";
+            window.clearInterval(animation);
+            message.innerHTML = `Application timed out, make sure you spelled the artist
+            and song correctly and that you have a good internet connection`;
+            eraseData();
           });
     }
     
