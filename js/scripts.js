@@ -53,23 +53,35 @@ songRepository = (function (){
            });
            for (y = 0; y < userData.song.length; y++) {
             typedSong.push(userData.song[y]);
+           }
+           typedSong.forEach(function (item) {
+            if (item === " ") {
+                item = "%20";
+            }
+            queriedSong.push(item);
+            });
+            AddListItem(queriedArtist , queriedSong); 
+           }
         }
-        typedSong.forEach(function (item) {
-         if (item === " ") {
-             item = "%20";
-         }
-         queriedSong.push(item);
-         
-         
-        });
-             
-        }
-        AddListItem(queriedArtist , queriedSong);
-}
     function AddListItem (artist , song) {
+        var counter = 0;
+        var counterTwo = 0;
+        var animation = window.setInterval(function () {
+            var objectOne = document.getElementById("gearOne");
+            var objectTwo = document.getElementById("gearTwo");
+            objectOne.style.opacity = "1";
+            let value = `rotate(${counter++}deg)`;
+            objectOne.style.transform = value;
+            objectTwo.style.opacity = "1";
+            let value2 = `rotate(${counterTwo--}deg)`;
+            objectTwo.style.transform = value2;
+        } , 10);
         ApiUrl = 'https://api.lyrics.ovh/v1/' + `${artist.join("")}` + '/' + `${song.join("")}`;
 
         fetch(ApiUrl).then(function (response) {
+            document.getElementById("gearOne").style.opacity = "0";
+            document.getElementById("gearTwo").style.opacity = "0";
+            window.clearInterval(animation);
             return response.json();
           }).then(function (json) {
               let container = document.createElement("div");
