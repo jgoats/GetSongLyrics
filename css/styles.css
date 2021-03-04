@@ -1,9 +1,14 @@
 html {
-    background-image:url("../images/musicbackground.jpg");
-    background-repeat : no-repeat;
-    background-size : cover;
     padding : 0px;
     margin : 0px;
+}
+#wrapper {
+background-image: url('../images/musicbackground.jpg');
+position:absolute;
+top:0;
+bottom:0;
+right:0;
+left:0;
 }
 
 body {
