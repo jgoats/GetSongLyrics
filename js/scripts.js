@@ -68,7 +68,6 @@ songRepository = (function (){
         var counterTwo = 0;
         const controller = new AbortController();
        var animation = window.setInterval(function () {
-           console.log(counter);
             var objectOne = document.getElementById("gearOne");
             var objectTwo = document.getElementById("gearTwo");
             console.log(counter);
